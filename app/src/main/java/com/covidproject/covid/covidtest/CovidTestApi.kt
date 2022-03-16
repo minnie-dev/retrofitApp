@@ -2,6 +2,7 @@ package com.covidproject.covid.covidtest
 
 import com.covidproject.covid.BuildConfig
 import io.reactivex.Observable
+import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -12,5 +13,5 @@ interface CovidTestApi {
         @Query("numOfRows")NumOfRows:Int,
         @Query("spclAdmTyCd")SpclAdmTyCd:String,
         @Query("serviceKey")ServiceKey:String = BuildConfig.API_KEY
-    ): Observable<CovidTest>
+    ): Single<CovidTest>
 }

@@ -13,7 +13,7 @@ import io.reactivex.schedulers.Schedulers.io
 
 
 class MainActivity : AppCompatActivity() {
-    private var disposable: Disposable? = null
+    private var disposable: Disposable? = null // subscribe 호출 후 Disposable 객체반환
     private var itemList : List<Item>?=null
 
     private var dataList : List<Vaccine>?=null
@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity() {
 
     // 정보불러오기
     private fun getVaccine() {
-
         disposable = RetrofitObject.getApiService().getInfo(1, perPage)
             .observeOn(AndroidSchedulers.mainThread()) // Observable 아이템을 전파할 때 사용할 스레드 지정
             .subscribeOn(io()) // 구독에서 사용할 스레드
