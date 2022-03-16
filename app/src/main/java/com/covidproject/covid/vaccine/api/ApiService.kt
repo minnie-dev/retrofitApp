@@ -1,9 +1,8 @@
-package com.example.codingtestex.vaccine.api
+package com.covidproject.covid.vaccine.api
 
-import com.example.codingtestex.BuildConfig
-import com.example.codingtestex.vaccine.data.VaccineBody
+import com.covidproject.covid.BuildConfig
+import com.covidproject.covid.vaccine.data.VaccineBody
 import io.reactivex.Observable
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 

@@ -1,6 +1,6 @@
-package com.example.codingtestex.covidtest
+package com.covidproject.covid.covidtest
 
-import com.example.codingtestex.BuildConfig
+import com.covidproject.covid.BuildConfig
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query

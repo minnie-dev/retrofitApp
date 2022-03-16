@@ -1,4 +1,4 @@
-package com.example.codingtestex.vaccine.data
+package com.covidproject.covid.vaccine.data
 
 import com.google.gson.annotations.SerializedName
 

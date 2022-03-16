@@ -1,4 +1,4 @@
-package com.example.codingtestex
+package com.covidproject.covid
 
 import org.junit.Test
 

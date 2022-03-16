@@ -1,18 +1,15 @@
-package com.example.codingtestex
+package com.covidproject.covid
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.codingtestex.vaccine.api.RetrofitObject
-import com.example.codingtestex.covidtest.Item
-import com.example.codingtestex.covidtest.RetrofitClient
-import com.example.codingtestex.vaccine.data.Vaccine
+import com.covidproject.covid.vaccine.api.RetrofitObject
+import com.covidproject.covid.covidtest.Item
+import com.covidproject.covid.covidtest.RetrofitClient
+import com.covidproject.covid.vaccine.data.Vaccine
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers.io
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity() {
