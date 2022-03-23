@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
     private var itemList: List<Item>? = null
 
     private var dataList: List<Vaccine>? = null
-    private var perPage = 10
+    private var perPage = 284
 
     //Google Map
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient //  현재 위치 가져오기 위한 변수
@@ -56,12 +56,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
             WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
         )
 
-        /*val mapFragment = SupportMapFragment.newInstance()
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.map,mapFragment)
-            .commit()*/
-
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -78,9 +72,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
-        //getCovidTest()
+        getCovidTest()
         getVaccine()
-
 
 
         if (ActivityCompat.checkSelfPermission(
@@ -116,10 +109,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
 
         // 위치 퍼미션 체크
         if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED &&
-            hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED
-        ) {
-            startLocationUpdate()
-        }
+            hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED)
+                startLocationUpdate()
+
 
         googleMap.addMarker(
             MarkerOptions()
@@ -136,10 +128,11 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
                     .title("Marker")
             )
             moveCamera(
-                CameraUpdateFactory.newLatLng(
-                    LatLng(37.429571, 126.703271)
+                CameraUpdateFactory.newLatLngZoom(
+                    LatLng(37.429571, 126.703271), 10F
                 )
             )
+            //cameraPosition.zoom
         }
 
     }
@@ -215,7 +208,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
 
     // 정보불러오기
     private fun getCovidTest() {
-        disposable = RetrofitClient.getApiService().getInfo(1, 10, "99")
+        disposable = RetrofitClient.getApiService().getInfo(1, 100, "99")
             .observeOn(AndroidSchedulers.mainThread()) // Observable 아이템을 전파할 때 사용할 스레드 지정
             .subscribeOn(io()) // 구독에서 사용할 스레드
             .subscribe({
@@ -238,11 +231,18 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
                 Log.d(TAG, "Success")
                 if (it.totalCount == perPage) perPage = it.totalCount
                 if (it.data != dataList) dataList = it.data
+                Log.d(TAG, it.totalCount.toString())
                 Log.d(TAG, dataList.toString())
+                for(num in dataList!!.indices){
+                    googleMap.addMarker(MarkerOptions()
+                        .position(LatLng(dataList!![num].lat.toDouble(), dataList!![num].lng.toDouble()))
+                        .title(dataList!![num].facilityName))
+                }
 
             }, {
                 Log.d(TAG, "Fail")
             })
+
     }
 
     override fun onDestroy() {
