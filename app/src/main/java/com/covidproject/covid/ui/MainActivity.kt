@@ -1,7 +1,8 @@
-package com.covidproject.covid
+package com.covidproject.covid.ui
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
@@ -11,11 +12,12 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.covidproject.covid.covidtest.Item
-import com.covidproject.covid.covidtest.RetrofitClient
+import com.covidproject.covid.R
+import com.covidproject.covid.model.Item
+import com.covidproject.covid.model.RetrofitClient
 import com.covidproject.covid.databinding.ActivityMainBinding
-import com.covidproject.covid.vaccine.api.RetrofitObject
-import com.covidproject.covid.vaccine.data.Vaccine
+import com.covidproject.covid.model.RetrofitObject
+import com.covidproject.covid.model.Vaccine
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -72,8 +74,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
+        //getVaccine()
         getCovidTest()
-        getVaccine()
 
 
         if (ActivityCompat.checkSelfPermission(
@@ -95,6 +97,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
             mLocationRequest, mLocationCallback,
             Looper.myLooper()!!
         )
+
+
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -208,6 +212,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
 
     // 정보불러오기
     private fun getCovidTest() {
+        Log.d("MainActivity-coivdtest","시작")
+
+        var geocoder = Geocoder(this)
         disposable = RetrofitClient.getApiService().getInfo(1, 100, "99")
             .observeOn(AndroidSchedulers.mainThread()) // Observable 아이템을 전파할 때 사용할 스레드 지정
             .subscribeOn(io()) // 구독에서 사용할 스레드
@@ -216,6 +223,15 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
                 if (it.body.totalCount == perPage) perPage = it.body.totalCount
                 if (it.body.items.item != itemList) itemList = it.body.items.item
                 Log.d("MainActivity", it.body.items.item.toString())
+                /*for(num in itemList!!.indices){
+                    var addr= geocoder.getFromLocationName(itemList!![num].yadmNm,10)
+                    Log.d("MainActivity-coivdtest", addr.toString())
+                    Log.d("MainActivity-coivdtest", addr[0].latitude.toString())
+
+                    googleMap.addMarker(MarkerOptions()
+                        .position(LatLng(addr[0].latitude, addr[0].longitude))
+                        .title(itemList!![num].yadmNm))
+                }*/
 
             }, {
                 Log.d("MainActivity-coivdtest", it.message.toString())

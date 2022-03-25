@@ -27,7 +27,7 @@
             android:value="${GOOGLE_API_KEY}" />
 
         <activity
-            android:name="com.covidproject.covid.MainActivity"
+            android:name="com.covidproject.covid.ui.MainActivity"
 
             android:exported="true"
             tools:targetApi="n">

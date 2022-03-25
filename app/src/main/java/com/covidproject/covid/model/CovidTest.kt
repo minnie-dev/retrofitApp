@@ -1,4 +1,4 @@
-package com.covidproject.covid.covidtest
+package com.covidproject.covid.model
 
 import com.tickaroo.tikxml.annotation.*
 
@@ -27,7 +27,7 @@ data class Body(
     @PropertyElement
     val totalCount:Int, // 데이터 총 개수
     @Element
-    val items:Items, // 현황 데이터
+    val items: Items, // 현황 데이터
 )
 
 @Xml(name = "items")

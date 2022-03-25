@@ -1,4 +1,4 @@
-package com.covidproject.covid.covidtest
+package com.covidproject.covid.model
 
 import com.tickaroo.tikxml.TikXml
 import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory

@@ -1,7 +1,6 @@
-package com.covidproject.covid.covidtest
+package com.covidproject.covid.model
 
 import com.covidproject.covid.BuildConfig
-import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

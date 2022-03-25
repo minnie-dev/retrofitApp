@@ -1,4 +1,4 @@
-package com.covidproject.covid.vaccine.api
+package com.covidproject.covid.model
 
 import com.covidproject.covid.BuildConfig
 import retrofit2.Retrofit
@@ -14,6 +14,6 @@ object RetrofitObject {
             .build()
     }
 
-    fun getApiService():ApiService =
+    fun getApiService(): ApiService =
         getRetrofit().create(ApiService::class.java)
 }

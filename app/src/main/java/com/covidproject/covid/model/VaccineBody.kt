@@ -1,4 +1,4 @@
-package com.covidproject.covid.vaccine.data
+package com.covidproject.covid.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -9,13 +9,13 @@ data class VaccineBody(
     @SerializedName("currentCount") val currentCount:Int, // 현재 검색된 데이터 수
     @SerializedName("data") val data:List<Vaccine> // 현황 데이터
 ){
-    override fun toString(): String {
+/*    override fun toString(): String {
         return "$data\n\n"+
                 "currentCount : $currentCount\n"+
                 "page : $page\n"+
                 "perPage : $perPage\n"+
                 "totalCount : $totalCount\n"
-    }
+    }*/
 }
 
 data class Vaccine(
@@ -34,7 +34,7 @@ data class Vaccine(
     @SerializedName("org") val org:String, // 운영기관
     @SerializedName("phoneNumber") val phoneNumber:String // 사무실 전화번호
 ){
-    override fun toString(): String {
+/*    override fun toString(): String {
         return "Vaccine :[\n"+
                 "   id : ${id}\n"+
                 "   centerName : ${centerName}\n"+
@@ -51,5 +51,5 @@ data class Vaccine(
                 "   org : ${org}\n"+
                 "   phoneNumber : ${phoneNumber}\n\n"
 
-    }
+    }*/
 }
