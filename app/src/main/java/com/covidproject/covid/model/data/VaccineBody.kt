@@ -1,4 +1,4 @@
-package com.covidproject.covid.model
+package com.covidproject.covid.model.data
 
 import com.google.gson.annotations.SerializedName
 

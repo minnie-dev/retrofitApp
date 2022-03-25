@@ -4,6 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/HEE/AndroidStudioProjects/CovidProject/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/HEE/AndroidStudioProjects/CovidProject/app/src/main/res/layout/fragment_list.xml" value="0.2598958333333333" />
+        <entry key="..\:/Users/HEE/AndroidStudioProjects/CovidProject/app/src/main/res/layout/fragment_map.xml" value="0.2598958333333333" />
+        <entry key="..\:/Users/HEE/AndroidStudioProjects/CovidProject/app/src/main/res/layout/item_list.xml" value="0.2953125" />
+        <entry key="..\:/Users/HEE/AndroidStudioProjects/CovidProject/app/src/main/res/menu/item_nav.xml" value="0.2598958333333333" />
         <entry key="..\:/Users/HEE/AndroidStudioProjects/codingTestEx/app/src/main/res/layout/activity_main.xml" value="0.10916919959473151" />
         <entry key="..\:/Users/HEE/AndroidStudioProjects/codingTestEx/app/src/main/res/xml/network_config.xml" value="1.2894736842105263" />
       </map>
