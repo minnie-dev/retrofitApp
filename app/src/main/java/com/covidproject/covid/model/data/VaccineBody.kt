@@ -50,6 +50,5 @@ data class Vaccine(
                 "   centerType : ${centerType}\n"+
                 "   org : ${org}\n"+
                 "   phoneNumber : ${phoneNumber}\n\n"
-
     }
 }
