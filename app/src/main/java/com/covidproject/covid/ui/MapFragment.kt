@@ -64,7 +64,9 @@ class MapFragment(var mContext: Context, var vaccineList: List<Vaccine>) : Fragm
             Log.d("확인", "아이템 ${item.facilityName}")
             googleMap.addMarker(MarkerOptions().position(latlng).title(item.facilityName))
         }
-        mLocationManager = mContext.getSystemService(LOCATION_SERVICE) as LocationManager?
+
+        // 현 위치 관련
+        /*mLocationManager = mContext.getSystemService(LOCATION_SERVICE) as LocationManager?
         mLocationListener = LocationListener { location ->
             var lat = 0.0
             var lng = 0.0
@@ -89,6 +91,6 @@ class MapFragment(var mContext: Context, var vaccineList: List<Vaccine>) : Fragm
                 30f,
                 mLocationListener!!
             )
-        }
+        }*/
     }
 }
