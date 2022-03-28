@@ -21,10 +21,9 @@ object RetrofitObject {
 }
 
 object RetrofitClient {
-
     private fun getRetrofit():Retrofit{
         return Retrofit.Builder()
-            .baseUrl("http://apis.data.go.kr/B551182/pubReliefHospService/")
+            .baseUrl("http://apis.data.go.kr/")
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(TikXmlConverterFactory.create(TikXml.Builder().exceptionOnUnreadXml(false).build()))
             .build()

@@ -36,13 +36,6 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         val mapFragment = MapFragment()
         supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, mapFragment)
             .commit()
-
-        //retrofitViewModel.getVaccine()
-
-       /* retrofitViewModel.vaccineLiveData.observe(this, Observer {
-            if (it.data != dataList) dataList = it.data
-            Log.d("TAG", it.toString())
-        })*/
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

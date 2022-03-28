@@ -52,4 +52,16 @@ data class Item(
     val adtFrDd:String?, // 운영가능일자
     @PropertyElement
     val spclAdmTyCd:String? // 구분코드
-)
+){
+    override fun toString(): String {
+
+        return "CovidTest :[\n"+
+                "   sidoNm : ${sidoNm}\n"+
+                "   sgguNm : ${sgguNm}\n"+
+                "   yadmNm : ${yadmNm}\n"+
+                "   hospTyTpCd : ${hospTyTpCd}\n"+
+                "   telno : ${telno}\n"+
+                "   adtFrDd : ${adtFrDd}\n"+
+                "   spclAdmTyCd : ${spclAdmTyCd}\n\n"
+    }
+}

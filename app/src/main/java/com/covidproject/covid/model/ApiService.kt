@@ -17,7 +17,7 @@ interface VaccineService {
 }
 
 interface CovidTestService {
-    @GET("getpubReliefHospList")
+    @GET("B551182/pubReliefHospService/getpubReliefHospList")
     fun getInfo(
         @Query("pageNo")PageNo:Int,
         @Query("numOfRows")NumOfRows:Int,

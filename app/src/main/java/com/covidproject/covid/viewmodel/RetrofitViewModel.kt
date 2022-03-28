@@ -11,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
 class RetrofitViewModel : ViewModel() {
 
     private var TAG = "ViewModel"
-    private var covidTestLiveData = MutableLiveData<CovidTest>()
+    var covidTestLiveData = MutableLiveData<CovidTest>()
     var vaccineLiveData = MutableLiveData<VaccineBody>()
 
     @SuppressLint("CheckResult")

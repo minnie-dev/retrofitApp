@@ -9,8 +9,12 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.covidproject.covid.databinding.FragmentMapBinding
+import com.covidproject.covid.model.data.Item
+import com.covidproject.covid.model.data.Items
 import com.covidproject.covid.model.data.Vaccine
+import com.covidproject.covid.ui.adapter.ListRecyclerAdapter
 import com.covidproject.covid.viewmodel.RetrofitViewModel
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -18,10 +22,10 @@ import com.google.android.gms.maps.OnMapReadyCallback
 class MapFragment : Fragment(), OnMapReadyCallback,
     ActivityCompat.OnRequestPermissionsResultCallback {
     private lateinit var binding: FragmentMapBinding
-    private var dataList: List<Vaccine>? = null
+    private var dataList: Items? = null
 
 
-    private val mapViewModel : RetrofitViewModel by viewModels()
+    private val retrofitViewModel : RetrofitViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,7 +34,13 @@ class MapFragment : Fragment(), OnMapReadyCallback,
     ): View {
         binding = FragmentMapBinding.inflate(layoutInflater, container, false)
 
+        retrofitViewModel.getCovidTest()
 
+        retrofitViewModel.covidTestLiveData.observe(viewLifecycleOwner) {
+            if (it.body.items != dataList) dataList = it.body.items
+
+            Log.d("TAG", it.body.items.item.toString())
+        }
         return binding.root
     }
 

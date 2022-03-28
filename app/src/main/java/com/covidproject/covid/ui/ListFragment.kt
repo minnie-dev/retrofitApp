@@ -39,8 +39,6 @@ class ListFragment : Fragment() {
             Log.d("TAG", it.toString())
         }
 
-
-
         return binding.root
     }
 
