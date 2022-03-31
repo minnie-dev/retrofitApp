@@ -30,11 +30,11 @@ class RetrofitViewModel : ViewModel() {
     @SuppressLint("CheckResult")
     fun getVaccine() {
         RetrofitObject.getApiService().getInfo(1, 50)
-            .observeOn(AndroidSchedulers.mainThread()) // Observable 아이템을 전파할 때 사용할 스레드 지정
+            .observeOn(Schedulers.io()) // Observable 아이템을 전파할 때 사용할 스레드 지정
             .subscribeOn(Schedulers.io()) // 구독에서 사용할 스레드
             .subscribe({
                 Log.d(TAG, "vaccine success")
-                vaccineLiveData.value = it
+                vaccineLiveData.postValue(it)
             }, {
                 Log.d(TAG, it.toString())
             })
